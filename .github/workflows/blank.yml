@@ -19,10 +19,10 @@ jobs:
 
       - name: Setup
 #        run: vcpkg install libxml2 capnproto spdlog boost openssl
-        run: vcpkg install capnproto
+        run: vcpkg install --triplet x64-windows capnproto
 
       - name: Configure
-        run: CMAKE_PREFIX_PATH=C:/vcpkg/packages/capnproto_x86-windows/lib/cmake cmake -B build -G "MinGW Makefiles" .
+        run: cmake -B build -G "MinGW Makefiles" .
 
       - name: Build
         run: cmake --build build
