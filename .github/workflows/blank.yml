@@ -17,8 +17,14 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+            core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+
       - name: Setup
-        run: vcpkg install --triplet x64-windows libxml2 capnproto spdlog boost openssl
+        run: vcpkg install --triplet x64-windows libxml2 capnproto spdlog boost-program-options openssl --binarysource="clear;x-gha,readwrite"
 
       - name: Configure
         run: cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .
