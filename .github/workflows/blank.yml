@@ -22,7 +22,7 @@ jobs:
         run: vcpkg install capnproto
 
       - name: Configure
-        run: cmake -B build -G "MinGW Makefiles" .
+        run: CMAKE_PREFIX_PATH=C:/vcpkg/packages/capnproto_x86-windows/lib/cmake cmake -B build -G "MinGW Makefiles" .
 
       - name: Build
         run: cmake --build build
