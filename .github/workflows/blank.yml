@@ -23,7 +23,16 @@ jobs:
             core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
             core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
 
-      - name: Setup
+      - name: Cache packages
+        id: cache-vcpkg
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-vcpkg-packages
+        with:
+          path: C:/vcpkg
+          key: ${{ runner.os }}-build-${{ env.cache-name }}
+
+      - name: Install packages
         run: vcpkg install --triplet x64-windows libxml2 capnproto spdlog boost-program-options openssl --binarysource="clear;x-gha,readwrite"
 
       - name: Configure
