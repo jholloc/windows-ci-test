@@ -18,11 +18,10 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup
-#        run: vcpkg install libxml2 capnproto spdlog boost openssl
-        run: vcpkg install --triplet x64-windows capnproto
+        run: vcpkg install --triplet x64-windows libxml2 capnproto spdlog boost openssl
 
       - name: Configure
-        run: cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake  -B build -G "MinGW Makefiles" .
+        run: cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .
 
       - name: Build
         run: cmake --build build
