@@ -18,7 +18,8 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup
-        run: vcpkg install libxml2 capnproto spdlog boost openssl
+#        run: vcpkg install libxml2 capnproto spdlog boost openssl
+        run: vcpkg install capnproto
 
       - name: Configure
         run: cmake -B build -G "MinGW Makefiles" .
