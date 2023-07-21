@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.14 )
 project( Windows-CI-Test )
 
 #find_package( LibXml2 REQUIRED )
-find_package( Capnproto REQUIRED )
+find_package( Capnproto CONFIG REQUIRED )
 #find_package( OpenSSL REQUIRED )
 #find_package( spdlog REQUIRED )
 #find_package( Boost COMPONENTS program_options REQUIRED )
