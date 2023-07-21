@@ -17,6 +17,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup
-        run: gcc --version
+      - name: Configure
+        run: cmake -Bbuild -H.
+
+      - name: Build
+        run: cmake --build build
 
