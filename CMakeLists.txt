@@ -12,8 +12,9 @@ find_package( Boost COMPONENTS program_options REQUIRED )
 find_package( XDR REQUIRED )
 
 add_executable( main src/main.cpp )
-target_include_directories( main ${XDR_INCLUDE_DIR} )
+target_include_directories( main PRIVATE ${XDR_INCLUDE_DIR} )
 target_link_libraries( main
+                       PRIVATE
                        LibXml2::LibXml2
                        CapnProto::capnp
                        OpenSSL::SSL
