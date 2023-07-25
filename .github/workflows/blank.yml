@@ -35,11 +35,23 @@ jobs:
       - name: Install packages
         run: vcpkg install --triplet x64-windows libxml2 capnproto spdlog boost-program-options openssl --binarysource="clear;x-gha,readwrite"
 
+      - name: Configure portable XDR
+        run: cd extlib && cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .
+
+      - name: Build portable XDR
+        run: cd extlib && cmake --build build
+
+      - name: Install portable XDR
+        run: cd extlib && cmake --install build
+
       - name: Configure
         run: cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .
 
       - name: Build
         run: cmake --build build
+
+      - name: Install
+        run: cmake --install build
 
       - name: Run
         run: ./build/main
