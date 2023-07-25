@@ -4,6 +4,7 @@
 #include <openssl/opensslv.h>
 #include <spdlog/version.h>
 #include <boost/version.hpp>
+#include <rpc/rpc.h>
 
 int main()
 {
@@ -12,5 +13,6 @@ int main()
     std::cout << "openssl version = " << OPENSSL_VERSION_TEXT << std::endl;
     std::cout << "spdlog version = " << SPDLOG_VERSION << std::endl;
     std::cout << "boost version = " << BOOST_LIB_VERSION << std::endl;
+    std::cout << "rpc version = " << RPC_MSG_VERSION << std::endl;
     return 0;
 }
