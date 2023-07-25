@@ -13,6 +13,6 @@ int main()
     std::cout << "openssl version = " << OPENSSL_VERSION_TEXT << std::endl;
     std::cout << "spdlog version = " << SPDLOG_VERSION << std::endl;
     std::cout << "boost version = " << BOOST_LIB_VERSION << std::endl;
-    std::cout << "rpc version = " << RPC_MSG_VERSION << std::endl;
+    std::cout << "rpc version = " << MAX_NETOBJ_SZ << std::endl;
     return 0;
 }
