@@ -10,6 +10,7 @@ find_package( OpenSSL REQUIRED )
 find_package( spdlog REQUIRED )
 find_package( Boost COMPONENTS program_options REQUIRED )
 find_package( XDR REQUIRED )
+find_package( dlfcn-win32 REQUIRED )
 
 add_executable( main src/main.cpp )
 target_include_directories( main PRIVATE ${XDR_INCLUDE_DIR} )
@@ -20,5 +21,6 @@ target_link_libraries( main
                        OpenSSL::SSL
                        OpenSSL::Crypto
                        spdlog::spdlog
+                       dlfcn-win32::dl
                        ${XDR_LIBRARIES}
                        )
