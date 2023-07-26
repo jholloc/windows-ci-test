@@ -6,6 +6,12 @@
 #include <boost/version.hpp>
 #include <rpc/rpc.h>
 
+#if defined(_WIN32)
+#if !defined(MINGW)
+LIBRARY_API int gettimeofday(struct timeval* tp, struct timezone* tzp);
+#endif
+#endif
+
 int main()
 {
     std::cout << "libxml2 version = " << LIBXML_DOTTED_VERSION << std::endl;
