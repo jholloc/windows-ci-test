@@ -5,6 +5,17 @@
 #include <spdlog/version.h>
 #include <boost/version.hpp>
 #include <rpc/rpc.h>
+#include <sys/time.h>
+
+#ifdef _WIN32
+#  ifdef UDA_EXPORT
+#    define LIBRARY_API __declspec(dllexport)
+#  else
+#    define LIBRARY_API __declspec(dllimport)
+#  endif
+#else
+#  define LIBRARY_API
+#endif
 
 #if defined(_WIN32)
 #if !defined(MINGW)
@@ -19,6 +30,11 @@ int main()
     std::cout << "openssl version = " << OPENSSL_VERSION_TEXT << std::endl;
     std::cout << "spdlog version = " << SPDLOG_VERSION << std::endl;
     std::cout << "boost version = " << BOOST_LIB_VERSION << std::endl;
-    std::cout << "rpc version = " << MAX_NETOBJ_SZ << std::endl;
+    std::cout << "rpc max netobj = " << MAX_NETOBJ_SZ << std::endl;
+
+    timeval current = {};
+    gettimeofday(&current, nullptr);
+    std::cout << "time = " << current.tv_sec << std::endl;
+
     return 0;
 }

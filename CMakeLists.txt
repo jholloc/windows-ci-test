@@ -9,8 +9,12 @@ find_package( Capnproto CONFIG REQUIRED )
 find_package( OpenSSL REQUIRED )
 find_package( spdlog REQUIRED )
 find_package( Boost COMPONENTS program_options REQUIRED )
-find_package( XDR REQUIRED )
-find_package( dlfcn-win32 REQUIRED )
+if( WIN32 OR MINGW )
+  find_package( XDR REQUIRED )
+  if( NOT MINGW )
+    find_package( dlfcn-win32 CONFIG REQUIRED )
+  endif()
+endif()
 
 add_executable( main src/main.cpp )
 target_include_directories( main PRIVATE ${XDR_INCLUDE_DIR} )
@@ -21,6 +25,11 @@ target_link_libraries( main
                        OpenSSL::SSL
                        OpenSSL::Crypto
                        spdlog::spdlog
-                       dlfcn-win32::dl
-                       ${XDR_LIBRARIES}
                        )
+
+if( WIN32 OR MINGW )
+  target_link_libraries( main PRIVATE ${XDR_LIBRARIES} )
+  if( NOT MINGW )
+    target_link_libraries( main PRIVATE dlfcn-win32::dl )
+  endif()
+endif()
