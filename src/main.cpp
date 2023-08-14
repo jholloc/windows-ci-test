@@ -6,6 +6,7 @@
 #include <boost/version.hpp>
 #include <rpc/rpc.h>
 #include <sys/time.h>
+#include <fmt/format.h>
 
 #ifdef _WIN32
 #  ifdef UDA_EXPORT
@@ -35,6 +36,9 @@ int main()
     timeval current = {};
     gettimeofday(&current, nullptr);
     std::cout << "time = " << current.tv_sec << std::endl;
+
+    const char* logdir = "/tmp/uda/log";
+    std::string cmd = fmt::format("mkdir -p {} 2>/dev/null", logdir);
 
     return 0;
 }
