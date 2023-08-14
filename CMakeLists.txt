@@ -25,10 +25,10 @@ target_link_libraries( main
                        OpenSSL::SSL
                        OpenSSL::Crypto
                        spdlog::spdlog
+                       fmt::fmt
                        )
 
 if( WIN32 OR MINGW )
-  target_compile_definitions( main PRIVATE -DFMT_SHARED )
   target_link_libraries( main PRIVATE ${XDR_LIBRARIES} )
   if( NOT MINGW )
     target_link_libraries( main PRIVATE dlfcn-win32::dl )
