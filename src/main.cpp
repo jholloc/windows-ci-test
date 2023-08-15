@@ -1,10 +1,11 @@
+#define FMT_STATIC 1
+
 #include <iostream>
 #include <libxml/xmlversion.h>
 #include <capnp/common.h>
 #include <openssl/opensslv.h>
 #include <spdlog/version.h>
 #include <boost/version.hpp>
-#include <rpc/rpc.h>
 #include <sys/time.h>
 #include <fmt/format.h>
 
@@ -31,7 +32,6 @@ int main()
     std::cout << "openssl version = " << OPENSSL_VERSION_TEXT << std::endl;
     std::cout << "spdlog version = " << SPDLOG_VERSION << std::endl;
     std::cout << "boost version = " << BOOST_LIB_VERSION << std::endl;
-    std::cout << "rpc max netobj = " << MAX_NETOBJ_SZ << std::endl;
 
     timeval current = {};
     gettimeofday(&current, nullptr);
