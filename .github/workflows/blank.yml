@@ -34,7 +34,7 @@ jobs:
 
       - name: Install packages
         run: >
-          vcpkg install --triplet x64-mingw-dynamic --binarysource="clear;x-gha,readwrite"
+          vcpkg install --triplet x64-mingw-windows --binarysource="clear;x-gha,readwrite"
           libxml2
           capnproto
           boost-program-options
