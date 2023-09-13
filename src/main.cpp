@@ -1,5 +1,3 @@
-#define FMT_STATIC 1
-
 #include <iostream>
 #include <libxml/xmlversion.h>
 #include <capnp/common.h>
@@ -39,6 +37,7 @@ int main()
 
     const char* logdir = "/tmp/uda/log";
     std::string cmd = fmt::format("mkdir -p {} 2>/dev/null", logdir);
+    std::cout << "cmd = " << cmd << std::endl;
 
     return 0;
 }
