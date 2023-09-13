@@ -41,13 +41,13 @@ jobs:
           openssl
           dlfcn-win32
 
-      - name: Configure portable XDR & spdlog
+      - name: Configure portable XDR, spdlog & libfmt
         run: cd extlib && cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=ON -DSPDLOG_INSTALL=ON -B build -G "MinGW Makefiles" .
 
-      - name: Build portable XDR & spdlog
+      - name: Build portable XDR, spdlog & libfmt
         run: cd extlib && cmake --build build
 
-      - name: Install portable XDR & spdlog
+      - name: Install portable XDR, spdlog & libfmt
         run: cd extlib && cmake --install build --prefix install
 
       - name: Configure
