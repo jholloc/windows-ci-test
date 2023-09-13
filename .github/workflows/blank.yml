@@ -37,18 +37,17 @@ jobs:
           vcpkg install --triplet x64-mingw-dynamic --binarysource="clear;x-gha,readwrite"
           libxml2
           capnproto
-          spdlog
           boost-program-options
           openssl
           dlfcn-win32
 
-      - name: Configure portable XDR
-        run: cd extlib && cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .
+      - name: Configure portable XDR & spdlog
+        run: cd extlib && cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -DBUILD_SHARED_LIBS=ON -DSPDLOG_INSTALL=ON -B build -G "MinGW Makefiles" .
 
-      - name: Build portable XDR
+      - name: Build portable XDR & spdlog
         run: cd extlib && cmake --build build
 
-      - name: Install portable XDR
+      - name: Install portable XDR & spdlog
         run: cd extlib && cmake --install build --prefix install
 
       - name: Configure
