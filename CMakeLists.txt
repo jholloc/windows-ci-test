@@ -6,9 +6,11 @@ set( CMAKE_PREFIX_PATH ${_VCPKG_INSTALLED_DIR}/x64-mingw-static )
 #set( BOOST_ROOT ${_VCPKG_INSTALLED_DIR}/x64-mingw-static )
 
 find_package( Boost COMPONENTS program_options REQUIRED )
+find_package( CapnProto CONFIG REQUIRED )
 
 add_executable( main src/main.cpp )
 target_link_libraries( main
                        PRIVATE
                        Boost::program_options
+                       CapnProto::kj CapnProto::capnp CapnProto::capnpc CapnProto::kj-gzip
                        )
