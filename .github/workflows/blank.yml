@@ -35,8 +35,12 @@ jobs:
       - name: Install packages
         run: >
           vcpkg install --triplet x64-mingw-static --binarysource="clear;x-gha,readwrite"
-          boost-program-options
+          libxml2
           capnproto
+          boost-program-options
+          openssl
+          dlfcn-win32
+          spdlog
 
       - name: Configure
         run: cmake -DCMAKE_TOOLCHAIN_FILE=C:/vcpkg/scripts/buildsystems/vcpkg.cmake -B build -G "MinGW Makefiles" .

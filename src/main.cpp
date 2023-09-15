@@ -1,6 +1,10 @@
 #include <iostream>
-#include <boost/program_options.hpp>
+#include <libxml/xmlversion.h>
 #include <capnp/common.h>
+#include <openssl/opensslv.h>
+#include <spdlog/version.h>
+#include <boost/version.hpp>
+#include <boost/program_options.hpp>
 
 namespace po = boost::program_options;
 
@@ -33,7 +37,11 @@ int main(int argc, const char** argv)
         return 1;
     }
 
+    std::cout << "libxml2 version = " << LIBXML_DOTTED_VERSION << std::endl;
     std::cout << "capnp version = " << CAPNP_VERSION << std::endl;
+    std::cout << "openssl version = " << OPENSSL_VERSION_TEXT << std::endl;
+    std::cout << "spdlog version = " << SPDLOG_VERSION << std::endl;
+    std::cout << "boost version = " << BOOST_LIB_VERSION << std::endl;
 
     std::cout << "ok" << std::endl;
 
