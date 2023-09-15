@@ -32,5 +32,7 @@ int main(int argc, const char** argv)
         return 1;
     }
 
+    std::cout << "ok" << std::endl;
+
     return 0;
 }
