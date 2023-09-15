@@ -8,22 +8,6 @@
 #include <sys/time.h>
 #include <fmt/format.h>
 
-#ifdef _WIN32
-#  ifdef UDA_EXPORT
-#    define LIBRARY_API __declspec(dllexport)
-#  else
-#    define LIBRARY_API __declspec(dllimport)
-#  endif
-#else
-#  define LIBRARY_API
-#endif
-
-#if defined(_WIN32)
-#if !defined(__MINGW32__)
-LIBRARY_API int gettimeofday(struct timeval* tp, struct timezone* tzp);
-#endif
-#endif
-
 namespace po = boost::program_options;
 
 int main(int argc, const char** argv)
