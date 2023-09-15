@@ -1,5 +1,6 @@
 #include <iostream>
 #include <boost/program_options.hpp>
+#include <capnp/common.h>
 
 namespace po = boost::program_options;
 
@@ -31,6 +32,8 @@ int main(int argc, const char** argv)
         std::cout << desc << "\n";
         return 1;
     }
+
+    std::cout << "capnp version = " << CAPNP_VERSION << std::endl;
 
     std::cout << "ok" << std::endl;
 
