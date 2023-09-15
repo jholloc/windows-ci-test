@@ -4,6 +4,10 @@ project( Windows-CI-Test )
 
 set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules )
 
+set( BOOST_ROOT ${_VCPKG_INSTALLED_DIR} )
+set( Boost_NO_SYSTEM_PATHS ON )
+set( Boost_NO_BOOST_CMAKE ON )
+
 find_package( Boost COMPONENTS program_options REQUIRED )
 
 add_executable( main src/main.cpp )
