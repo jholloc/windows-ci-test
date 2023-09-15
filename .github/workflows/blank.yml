@@ -34,7 +34,7 @@ jobs:
 
       - name: Install packages
         run: >
-          vcpkg install --triplet x64-windows --binarysource="clear;x-gha,readwrite"
+          vcpkg install --triplet x64-mingw --binarysource="clear;x-gha,readwrite"
           boost-program-options
 
       - name: Configure
