@@ -3,7 +3,7 @@ cmake_minimum_required( VERSION 3.14 )
 project( Windows-CI-Test )
 
 set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/Modules )
-set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${_VCPKG_INSTALLED_DIR}/x64-mingw-static )
+set( CMAKE_PREFIX_PATH ${_VCPKG_INSTALLED_DIR}/x64-mingw-static )
 
 find_package( LibXml2 REQUIRED )
 find_package( Capnproto CONFIG REQUIRED )
